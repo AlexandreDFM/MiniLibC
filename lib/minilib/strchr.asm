@@ -17,28 +17,25 @@ strchr:
     je strchr_end      ; Si c'est NULL, on sort de la fonction
 
 strchr_loop:
-    cmp byte [rdi], 0
-    je strchr_end
-    cmp rdi, rsi
-    jmp strchr_found
-    inc rdi
-    jmp strchr_loop
+    cmp byte [rdi], 0  ; Compare le byte à l'adresse rdi avec 0 (NULL)
+    je strchr_end      ; Si c'est 0, on sort de la boucle
+    cmp rdi, rsi       ; Compare rdi avec rsi
+    jmp strchr_found   ; Si c'est égal, on sort de la boucle
+    inc rdi            ; On incrémente rdi
+    jmp strchr_loop    ; On boucle
 
 strchr_found:
-    mov rax, rdi
-    pop rsi
-    pop rdi
-    mov rsp, rbp
-    pop rbp
-    ret
+    mov rax, rdi       ; On met l'adresse de rdi dans rax
+    pop rsi            ; On restaure rsi
+    pop rdi            ; On restaure rdi
+    mov rsp, rbp       ; Stack Frame Cleanup
+    pop rbp            ; Epilogue
+    ret                ; Return
 
 strchr_end:
-    mov rax, 0
-    pop rsi
-    pop rdi
-    mov rsp, rbp
-    pop rbp
-    ret
-
-section .data
-    msg: db "Hello, World!", 10, 0
+    mov rax, 0         ; On met NULL dans rax
+    pop rsi            ; On restaure rsi
+    pop rdi            ; On restaure rdi
+    mov rsp, rbp       ; Stack Frame Cleanup
+    pop rbp            ; Epilogue
+    ret                ; Return
