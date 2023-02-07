@@ -1,0 +1,8 @@
+.vscode
+.idea
+*.o
+*.so
+main.c
+include
+compile.sh
+minilib
