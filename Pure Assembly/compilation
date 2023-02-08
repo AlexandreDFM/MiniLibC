@@ -1,0 +1,22 @@
+// Compil Write
+nasm -f elf64 write.asm -o write.o
+ld write.o -o write
+
+// Compil Printf
+nasm -f elf64 printf.asm -o printf.o
+gcc printf.o -o printf
+
+// Compil Strlen
+nasm -f elf64 my_strlen.asm -o my_strlen.o
+ld my_strlen.o -o my_strlen
+
+nasm -f elf64 my_strlen.asm && gcc main_strlen.c my_strlen.o -o main_strlen && ./main_strlen
+
+// Compil Disp_arg
+nasm -f elf64 disp_string.asm -o disp_string.o
+ld disp_string.o -o disp_string
+
+nasm -f elf64 disp_string.asm && gcc disp_args.c my_strlen.o disp_string.o -o disp_args && ./disp_args
+
+nasm -f elf64 disp_string.asm && nasm -f elf64 my_strlen.asm && gcc disp_args.c my_strlen.o disp_string.o -o disp_args && ./disp_args test ds
+./disp_args Epitech ASM rulez

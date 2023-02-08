@@ -1,0 +1,13 @@
+// Compil .o
+gcc -c -Wall -Werror -fpic prints.c
+// Compil Shared
+gcc -shared -o libprints.so prints.o
+// Compil with shared
+gcc -L./ -lprints -Wall -Werror -o test main.c
+// Compil with shared and rpath
+gcc -L./ -lprints -Wl,-rpath=./ -Wall -Werror -o test main.c
+
+
+// Test Malloc
+LD_PRELOAD=./libprints.so /bin/ls
+LD_PRELOAD=./libprints.so /bin/cat
