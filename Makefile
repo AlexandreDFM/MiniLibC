@@ -19,9 +19,9 @@ RM			=	rm -f
 
 SRC 		=   lib/minilib/strlen.asm 			\
 				lib/minilib/strchr.asm 			\
-#				lib/minilib/strrchr.asm 		\
-#				lib/minilib/memset.asm 			\
-#				lib/minilib/memcpy.asm 			\
+				lib/minilib/strrchr.asm 		\
+				lib/minilib/memset.asm 			\
+				lib/minilib/memcpy.asm 			\
 #				lib/minilib/strcmp.asm 			\
 #				lib/minilib/memmove.asm 		\
 #				lib/minilib/strncmp.asm 		\
@@ -32,11 +32,10 @@ SRC 		=   lib/minilib/strlen.asm 			\
 
 OBJ    		=    $(SRC:.asm=.o)
 
-all:
-	for i in $(SRC); do \
-		$(NASM) $(NASMFLAGS) $$i; \
-	done
-	#$(NASM) $(NASMFLAGS) $(SRC)
+%.o : %.asm
+	$(NASM) $(NASMFLAGS) -o $@ $<
+
+all: $(OBJ)
 	$(LINK) $(LINKFLAGS) -o $(NAME) $(OBJ)
 
 clean:
