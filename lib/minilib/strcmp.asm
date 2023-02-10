@@ -12,7 +12,7 @@ strcmp:
     mov rbp, rsp            ; Stack Frame Setup
     push rdi                ; On sauvegarde rdi
     push rsi                ; On sauvegarde rsi
-    mov rax, 0              ; On met 0 dans rdx
+    mov rax, 0              ; On met 0 dans rax
 
 strcmp_loop:
     mov al, [rdi]           ; On met dans al le caractère de rdi
