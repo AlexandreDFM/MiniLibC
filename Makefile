@@ -26,7 +26,7 @@ SRC 		=   lib/minilib/strlen.asm 			\
 				lib/minilib/memmove.asm 		\
 				lib/minilib/strncmp.asm 		\
 				lib/minilib/strcasecmp.asm 		\
-#				lib/minilib/strstr.asm 			\
+				lib/minilib/strstr.asm 			\
 #				lib/minilib/strpbrk.asm 		\
 #				lib/minilib/strcspn.asm			\
 
