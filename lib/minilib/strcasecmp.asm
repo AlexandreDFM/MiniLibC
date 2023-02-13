@@ -5,9 +5,9 @@
 ; strncmp.asm
 ;
 
-global my_strcasecmp
+global strcasecmp
 
-my_strcasecmp:
+strcasecmp:
     push rbp                    ; Prologue
     mov rbp, rsp                ; Stack Frame Setup
     push rdi                    ; On sauvegarde rdi
