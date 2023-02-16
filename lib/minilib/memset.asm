@@ -6,9 +6,9 @@
 ;
 
 bits 64
-global my_memset
+global memset
 
-my_memset:
+memset:
     push rbp                  ; Prologue
     mov rbp, rsp              ; Stack Frame Setup
     cmp rdx, 0                ; On compare rdx à 0
