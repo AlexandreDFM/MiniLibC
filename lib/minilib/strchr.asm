@@ -17,10 +17,10 @@ strchr:
     je strchr_end           ; Si c'est NULL, on sort de la fonction
 
 strchr_loop:
-    cmp byte [rdi], 0       ; Compare le byte à l'adresse rdi avec 0 (NULL)
-    je strchr_end           ; Si c'est 0, on sort de la boucle
     cmp byte [rdi], sil     ; Compare rdi avec rsi
     je strchr_found         ; Si c'est égal, on sort de la boucle
+    cmp byte [rdi], 0       ; Compare le byte à l'adresse rdi avec 0 (NULL)
+    je strchr_end           ; Si c'est 0, on sort de la boucle
     inc rdi                 ; On incrémente rdi
     jmp strchr_loop         ; On boucle
 
