@@ -28,7 +28,7 @@ strcasecmp_loop:
     add bl, 32                  ; On ajoute 32 à bl
     cmp al, bl                  ; On compare al à bl
     je strcasecmp_loop          ; Si al est égal à bl, on continue la boucle
-    sub bl, 32                  ; On soustrait 32 à bl
+    sub bl, 64                  ; On soustrait 32 à bl
     cmp al, bl                  ; On compare al à bl
     je strcasecmp_loop          ; Si al est égal à bl, on continue la boucle
 
