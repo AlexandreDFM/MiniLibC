@@ -26,6 +26,7 @@ memmove_loop:
     jmp memmove_loop              ; On boucle
 
 memmove_loop_end:
+    mov rax, rdi                  ; On copie rdi dans rax
     mov rbp, rsp                  ; Stack Frame Cleanup
     pop rbp                       ; Epilogue
     ret                           ; Return

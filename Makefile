@@ -29,6 +29,12 @@ SRC 		=   lib/minilib/strlen.asm 			\
 				lib/minilib/strstr.asm 			\
 				lib/minilib/strpbrk.asm 		\
 				lib/minilib/strcspn.asm			\
+				lib/minilib/ffs.asm 			\
+				lib/minilib/index.asm 			\
+				lib/minilib/rindex.asm 			\
+#				lib/minilib/strfry.asm 			\
+#				lib/minilib/memfrob.asm 		\
+#				lib/minilib/syscall.asm.asm 		\
 
 OBJ    		=    $(SRC:.asm=.o)
 
