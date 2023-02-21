@@ -16,19 +16,19 @@ strrchr:
     mov rax, 0                ; On met NULL dans rax
     cmp rdi, 0                ; On compare rdi avec 0 (NULL)
     je strrchr_end            ; Si c'est NULL, on sort de la fonction
-    cmp byte [rdi], sil       ; Compare rdi avec rsi
-    je strrchr_set            ; Si c'est égal, on met rdi dans rax
 
 strrchr_loop:
-    cmp byte [rdi], 0         ; Compare le byte à l'adresse rdi avec 0 (NULL)
-    je strrchr_end            ; Si c'est 0, on sort de la boucle
     cmp byte [rdi], sil       ; Compare rdi avec rsi
     je strrchr_set            ; Si c'est égal, on met rdi dans rax
+    cmp byte [rdi], 0         ; Compare le byte à l'adresse rdi avec 0 (NULL)
+    je strrchr_end            ; Si c'est 0, on sort de la boucle
     inc rdi                   ; On incrémente rdi
     jmp strrchr_loop          ; On boucle
 
 strrchr_set:
     mov rax, rdi              ; On met le byte à l'adresse rsi dans sil
+    cmp byte [rdi], 0         ; Compare le byte à l'adresse rdi avec 0 (NULL)
+    je strrchr_end            ; Si c'est 0, on sort de la boucle
     inc rdi                   ; On incrémente rdi
     jmp strrchr_loop          ; On boucle
 
