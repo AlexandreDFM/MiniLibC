@@ -27,8 +27,11 @@ rindex_loop:
 
 rindex_set:
     mov rax, rdi              ; On met le byte à l'adresse rsi dans sil
+    cmp byte [rdi], 0         ; Compare le byte à l'adresse rdi avec 0 (NULL)
+    je rindex_end             ; Si c'est 0, on sort de la boucle
     inc rdi                   ; On incrémente rdi
     jmp rindex_loop           ; On boucle
+
 
 rindex_end:
     pop rsi                   ; On restaure rsi

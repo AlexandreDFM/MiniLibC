@@ -11,35 +11,22 @@ global ffs
 ffs:
     push rbp                   ; Prologue
     mov rbp, rsp               ; Stack Frame Setup
-    push rdi                   ; On sauvegarde rdi
-    push rdx                   ; On sauvegarde rdx
-    xor rdx, rdx               ; On initialise rdx à 0
-    cmp rdi, 0                 ; On regarde si rdi est égal à 0
-    je ffs_end_null            ; Si oui, on sort de la boucle
+    xor rax, rax               ; On met 0 dans rdx
+    cmp rdi, 0                 ; On compare à 0
+    je ffs_end                 ; Si c'est 0, on sort
+    inc rax                    ; On incrémente rdx
 
 ffs_loop:
-    cmp byte [rdi], 0          ; On regarde si rdi est égal à 0
-    je ffs_end_null            ; Si oui, on sort de la boucle
-    and rdi, 1                 ; On regarde si le bit de poids faible est à 1
-    jz ffs_end                 ; Si oui, on sort de la boucle
-    shr rdi, 1                 ; Sinon, on décale rdi de 1 bit vers la droite
-    inc rdi                    ; On incrémente rdi
-    inc rdx                    ; On incrémente rdx
+    and rdi, 1                 ; On compare à 1
+    jne ffs_end                ; Si c'est 1, on sort
+    shr rdi, 1                 ; On fait un shift right de 1
+    inc rax                    ; On incrémente rdx
+    cmp rdi, 0                 ; On compare à 0
+    je ffs_end                 ; Si c'est 0, on sort
     jmp ffs_loop               ; On boucle
 
-ffs_end_null:
-    mov rax, 0                 ; On met 0 dans rax
-    pop rdx                    ; On restaure rdx
-    pop rdi                    ; On restaure rdi
+ffs_end:
     mov rsp, rbp               ; Stack Frame Cleanup
     pop rbp                    ; Epilogue
     ret                        ; Return
 
-ffs_end:
-    add rdx, 1                 ; On incrémente rdi
-    mov rax, rdx               ; On met rdx dans rax
-    pop rdx                    ; On restaure rdx
-    pop rdi                    ; On restaure rdi
-    mov rsp, rbp               ; Stack Frame Cleanup
-    pop rbp                    ; Epilogue
-    ret                        ; Return
